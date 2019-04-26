@@ -19,8 +19,10 @@ defn pg pcregrep
 defn pgi pcregrep -i
 defn po pcregrep -o
 defn pgo pcregrep -o
+defn pgor pcregrep -or
+defn pgro pcregrep -ro
 defn por pcregrep -or
-defn pro pcregrep -or
+defn pro pcregrep -ro
 
 defn gv grep -v
 defn v grep -v
@@ -30,6 +32,7 @@ defn dgs dict-grep-subsequence
 
 defn r grep
 defn rl grep -l
+defn rL grep -L
 defn rrl grep -rl
 defn ro grep -o
 defn rr grep -r
@@ -55,6 +58,13 @@ defn r3 grep -m3
 defn r4 grep -m4
 defn r5 grep -m5
 defn r10 grep -m10
+
+defn rn1 grep -m1 -n
+defn rn2 grep -m2 -n
+defn rn3 grep -m3 -n
+defn rn4 grep -m4 -n
+defn rn5 grep -m5 -n
+defn rn10 grep -m10 -n
 
 defn ro1 grep -om1
 defn ro2 grep -om2
