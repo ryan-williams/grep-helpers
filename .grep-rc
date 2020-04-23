@@ -36,6 +36,12 @@ defn rL grep -L
 defn rrl grep -rl
 defn ro grep -o
 defn rr grep -r
+
+grep_recursive_cwd() {
+  grep -r "$@" .
+}
+export -f grep_recursive_cwd
+defn rr. grep_recursive_cwd
 defn rro grep -ro
 defn rc grep -c
 defn rrc grep-rc
