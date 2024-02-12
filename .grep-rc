@@ -17,6 +17,7 @@ grep="$(which grep)"
 
 defn pg pcregrep
 defn pgi pcregrep -i
+defn pgv pcregrep -v
 defn po pcregrep -o
 defn pgo pcregrep -o
 defn pgor pcregrep -or
