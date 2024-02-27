@@ -2,18 +2,9 @@
 
 # Grep options
 export USE_LIBPCRE=yes
-
-#export GREP_OPTIONS="--color=auto"
-
 unalias grep &> /dev/null
 grep="$(which grep)"
-#ggrep="$(which ggrep 2> /dev/null)"
-
-#if [ -n "$ggrep" ]; then
-#  defn grep $ggrep --color=auto
-#else
-  defn grep "$grep" --color=auto
-#fi
+alias grep="$grep --color=auto"
 
 defn pg pcregrep
 defn pgi pcregrep -i
