@@ -2,7 +2,7 @@
 
 # Grep options
 export USE_LIBPCRE=yes
-unalias grep &> /dev/null
+unalias grep &> /dev/null || true
 grep="$(which grep)"
 alias grep="$grep --color=auto"
 
