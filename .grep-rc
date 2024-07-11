@@ -25,27 +25,33 @@ defn dgs dict-grep-subsequence
 defn r grep
 defn rl grep -l
 defn rL grep -L
-defn rrl grep -rl
 defn ro grep -o
-defn rr grep -r
 
-grep_recursive_cwd() {
-  grep -r "$@" .
+grep_cwd() {
+    flags=()
+    while [[ "$1" == -* ]]; do
+        flags+=("$1")
+        shift
+    done
+    grep "${flags[@]}" "${@:-.}"
 }
-export -f grep_recursive_cwd
-defn rr. grep_recursive_cwd
-defn rro grep -ro
+export -f grep_cwd
+defn rr grep_cwd -r
+defn rr. grep_cwd -r
+defn rri grep_cwd -ri
+defn rrl grep_cwd -rl
+defn rrn grep_cwd -rn
+defn rro grep_cwd -ro
+defn rir grep_cwd -ri
+defn rni grep_cwd -ni
+defn rvc grep_cwd -vc
+defn rcv grep_cwd -cv
+
 defn rc grep -c
 defn rrc grep-rc
 defn rn grep -n
-defn rrn grep -rn
 defn rv grep -v
 defn ri grep -i
-defn rri grep -ri
-defn rir grep -ri
-defn rni grep -ni
-defn rvc grep -vc
-defn rcv grep -cv
 
 defn rbn grep -n --binary-files text
 defn rnb grep -n --binary-files text
@@ -110,3 +116,36 @@ defn rC4 grep -C4
 defn rC5 grep -C5
 defn rC10 grep -C10
 defn rC20 grep -C20
+
+# Ripgrep aliases
+if which rg &>/dev/null; then
+    ripgrep_multiple() {
+        flags=()
+        while [[ "$1" == -* ]]; do
+            flags+=("$1")
+            shift
+        done
+        args=()
+        for arg in "$@"; do
+            args+=("-e" "$arg")
+        done
+        rg "${flags[@]}" "${args[@]}"
+    }
+    export -f ripgrep_multiple
+    defn rge ripgrep_multiple
+    defn rgae ripgrep_multiple --no-ignore
+    defn rgce ripgrep_multiple -c
+    defn rgace ripgrep_multiple --no-ignore -c
+    defn rgec ripgrep_multiple -c
+    defn rgel ripgrep_multiple -l
+    defn rgle ripgrep_multiple -l
+    defn rgale ripgrep_multiple --no-ignore -l
+
+    defn rga rg --no-ignore
+    defn rgc rg -c
+    defn rgac rg --no-ignore -c
+    defn rgl rg -l
+    defn rgal rg --no-ignore -l
+    defn rgn rg -n
+    defn rgan rg --no-ignore -n
+fi
