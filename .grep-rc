@@ -118,6 +118,8 @@ defn rC5 grep -C5
 defn rC10 grep -C10
 defn rC20 grep -C20
 
+defn rq grep -q
+
 # Ripgrep aliases
 if which rg &>/dev/null; then
     ripgrep_multiple() {
